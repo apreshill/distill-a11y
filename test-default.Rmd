@@ -94,3 +94,11 @@ draft("article.Rmd", "distill_article", package = "distill")
   }
 }
 ```
+
+```{r, layout="l-body-outset"}
+session <- devtools::session_info()
+
+session$packages %>% 
+  select(package, loadedversion, date, source) %>% 
+  gt::gt()
+```
