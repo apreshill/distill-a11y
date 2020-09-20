@@ -1,0 +1,99 @@
+---
+title: "Untitled"
+description: |
+  A new article created using the Distill format.
+author:
+  - name: Nora Jones 
+    url: https://example.com/norajones
+    affiliation: Spacely Sprockets
+    affiliation_url: https://example.com/spacelysprokets
+date: "`r Sys.Date()`"
+output: 
+  distill::distill_article:
+    highlight: pygments
+    highlight_downlit: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We'll use `palmerpenguins` data.
+
+You can also use `palmerpenguins::path_to_file`.
+
+Distill is a publication format for scientific and technical writing, native to the web. 
+
+Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+
+
+
+```{r}
+# load pkgs
+library(tidyverse)
+library(palmerpenguins)
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species,
+                 shape = species),
+             size = 2,
+             alpha = 0.6) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm)) +
+  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
+  scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+```{r}
+penguins %>% 
+  count(species) %>% 
+  add_count(wt = n) %>% 
+  mutate(perc = (n/nn) * 100)
+```
+
+
+```{r echo=TRUE}
+fahrenheit_to_celsius <- function(temp_F) {
+  temp_C <- (temp_F - 32) * 5 / 9
+  return(temp_C)
+}
+```
+
+```{r echo=TRUE, eval=FALSE}
+library(rmarkdown)
+draft("article.Rmd", "distill_article", package = "distill")
+```
+
+```{css echo=TRUE, eval=FALSE}
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #455a64;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+.distill-site-header {
+}
+
+.distill-site-footer {
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+```
