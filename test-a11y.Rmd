@@ -117,3 +117,12 @@ https://github.com/ericwbailey/a11y-syntax-highlighting
 #06287e --> #4254A7 
 
 #666666 --> #696969 (dove grey)
+
+```{r, layout="l-body-outset"}
+session <- devtools::session_info()
+
+session$packages %>% 
+  select(package, loadedversion, date, source) %>% 
+  gt::gt()
+```
+

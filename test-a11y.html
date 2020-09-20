@@ -850,6 +850,13 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
       $(this).children().unwrap();
     });
 
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a[aria-hidden="true"]').remove();
+
     // load distill framework
     load_distill_framework();
 
@@ -2230,6 +2237,821 @@ distill-header .nav a {
 <p>#772d8b –&gt; #545454 (grey- emporer)</p>
 <p>#06287e –&gt; #4254A7</p>
 <p>#666666 –&gt; #696969 (dove grey)</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>session &lt;-<span class="st"> </span>devtools<span class="op">::</span><span class="kw">session_info</span>()</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>session<span class="op">$</span>packages <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span><span class="kw">select</span>(package, loadedversion, date, source) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="st">  </span>gt<span class="op">::</span><span class="kw">gt</span>()</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#gtuctixzcy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gtuctixzcy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gtuctixzcy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gtuctixzcy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gtuctixzcy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gtuctixzcy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gtuctixzcy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gtuctixzcy .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gtuctixzcy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gtuctixzcy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gtuctixzcy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gtuctixzcy .gt_from_md p {
+  line-height: 1em;
+  margin-bottom: 0em;
+  margin-top: 0em;
+}
+
+#gtuctixzcy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gtuctixzcy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#gtuctixzcy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gtuctixzcy .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gtuctixzcy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gtuctixzcy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#gtuctixzcy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gtuctixzcy .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#gtuctixzcy .gt_left {
+  text-align: left;
+}
+
+#gtuctixzcy .gt_center {
+  text-align: center;
+}
+
+#gtuctixzcy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gtuctixzcy .gt_font_normal {
+  font-weight: normal;
+}
+
+#gtuctixzcy .gt_font_bold {
+  font-weight: bold;
+}
+
+#gtuctixzcy .gt_font_italic {
+  font-style: italic;
+}
+
+#gtuctixzcy .gt_super {
+  font-size: 65%;
+}
+
+#gtuctixzcy .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="gtuctixzcy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">package</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">loadedversion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">source</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">assertthat</td>
+      <td class="gt_row gt_left">0.2.1</td>
+      <td class="gt_row gt_left">2019-03-21</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">backports</td>
+      <td class="gt_row gt_left">1.1.10</td>
+      <td class="gt_row gt_left">2020-09-15</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">broom</td>
+      <td class="gt_row gt_left">0.7.0</td>
+      <td class="gt_row gt_left">2020-07-09</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">callr</td>
+      <td class="gt_row gt_left">3.4.4</td>
+      <td class="gt_row gt_left">2020-09-07</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">cellranger</td>
+      <td class="gt_row gt_left">1.1.0</td>
+      <td class="gt_row gt_left">2016-07-27</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">cli</td>
+      <td class="gt_row gt_left">2.0.2</td>
+      <td class="gt_row gt_left">2020-02-28</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">colorspace</td>
+      <td class="gt_row gt_left">1.4-1</td>
+      <td class="gt_row gt_left">2019-03-18</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">crayon</td>
+      <td class="gt_row gt_left">1.3.4</td>
+      <td class="gt_row gt_left">2017-09-16</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">DBI</td>
+      <td class="gt_row gt_left">1.1.0</td>
+      <td class="gt_row gt_left">2019-12-15</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">dbplyr</td>
+      <td class="gt_row gt_left">1.4.2</td>
+      <td class="gt_row gt_left">2019-06-17</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">desc</td>
+      <td class="gt_row gt_left">1.2.0</td>
+      <td class="gt_row gt_left">2018-05-01</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">devtools</td>
+      <td class="gt_row gt_left">2.3.1</td>
+      <td class="gt_row gt_left">2020-07-21</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">digest</td>
+      <td class="gt_row gt_left">0.6.25</td>
+      <td class="gt_row gt_left">2020-02-23</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.1)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">distill</td>
+      <td class="gt_row gt_left">0.8.1</td>
+      <td class="gt_row gt_left">2020-09-20</td>
+      <td class="gt_row gt_left">Github (rstudio/distill@3bc3302)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">downlit</td>
+      <td class="gt_row gt_left">0.1.0.9000</td>
+      <td class="gt_row gt_left">2020-09-20</td>
+      <td class="gt_row gt_left">Github (r-lib/downlit@a62ab06)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">dplyr</td>
+      <td class="gt_row gt_left">1.0.2</td>
+      <td class="gt_row gt_left">2020-08-18</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">ellipsis</td>
+      <td class="gt_row gt_left">0.3.1</td>
+      <td class="gt_row gt_left">2020-05-15</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">evaluate</td>
+      <td class="gt_row gt_left">0.14</td>
+      <td class="gt_row gt_left">2019-05-28</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">fansi</td>
+      <td class="gt_row gt_left">0.4.1</td>
+      <td class="gt_row gt_left">2020-01-08</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">farver</td>
+      <td class="gt_row gt_left">2.0.3</td>
+      <td class="gt_row gt_left">2020-01-16</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">forcats</td>
+      <td class="gt_row gt_left">0.5.0</td>
+      <td class="gt_row gt_left">2020-03-01</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">fs</td>
+      <td class="gt_row gt_left">1.4.1.9000</td>
+      <td class="gt_row gt_left">2020-06-10</td>
+      <td class="gt_row gt_left">Github (r-lib/fs@bdc82be)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">generics</td>
+      <td class="gt_row gt_left">0.0.2</td>
+      <td class="gt_row gt_left">2018-11-29</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">ggplot2</td>
+      <td class="gt_row gt_left">3.3.2</td>
+      <td class="gt_row gt_left">2020-06-19</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">glue</td>
+      <td class="gt_row gt_left">1.4.2</td>
+      <td class="gt_row gt_left">2020-08-27</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">gtable</td>
+      <td class="gt_row gt_left">0.3.0</td>
+      <td class="gt_row gt_left">2019-03-25</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">haven</td>
+      <td class="gt_row gt_left">2.2.0</td>
+      <td class="gt_row gt_left">2019-11-08</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">hms</td>
+      <td class="gt_row gt_left">0.5.3</td>
+      <td class="gt_row gt_left">2020-01-08</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">htmltools</td>
+      <td class="gt_row gt_left">0.5.0</td>
+      <td class="gt_row gt_left">2020-06-16</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">httr</td>
+      <td class="gt_row gt_left">1.4.2</td>
+      <td class="gt_row gt_left">2020-07-20</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">jsonlite</td>
+      <td class="gt_row gt_left">1.7.1</td>
+      <td class="gt_row gt_left">2020-09-07</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">knitr</td>
+      <td class="gt_row gt_left">1.28.9</td>
+      <td class="gt_row gt_left">2020-06-15</td>
+      <td class="gt_row gt_left">Github (yihui/knitr@3373ebe)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">labeling</td>
+      <td class="gt_row gt_left">0.3</td>
+      <td class="gt_row gt_left">2014-08-23</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">lifecycle</td>
+      <td class="gt_row gt_left">0.2.0</td>
+      <td class="gt_row gt_left">2020-03-06</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">lubridate</td>
+      <td class="gt_row gt_left">1.7.9</td>
+      <td class="gt_row gt_left">2020-06-08</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">magrittr</td>
+      <td class="gt_row gt_left">1.5</td>
+      <td class="gt_row gt_left">2014-11-22</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">memoise</td>
+      <td class="gt_row gt_left">1.1.0</td>
+      <td class="gt_row gt_left">2017-04-21</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">modelr</td>
+      <td class="gt_row gt_left">0.1.5</td>
+      <td class="gt_row gt_left">2019-08-08</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">munsell</td>
+      <td class="gt_row gt_left">0.5.0</td>
+      <td class="gt_row gt_left">2018-06-12</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">palmerpenguins</td>
+      <td class="gt_row gt_left">0.1.0</td>
+      <td class="gt_row gt_left">2020-07-26</td>
+      <td class="gt_row gt_left">Github (allisonhorst/palmerpenguins@6953027)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">pillar</td>
+      <td class="gt_row gt_left">1.4.6</td>
+      <td class="gt_row gt_left">2020-07-10</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">pkgbuild</td>
+      <td class="gt_row gt_left">1.1.0</td>
+      <td class="gt_row gt_left">2020-07-13</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">pkgconfig</td>
+      <td class="gt_row gt_left">2.0.3</td>
+      <td class="gt_row gt_left">2019-09-22</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">pkgload</td>
+      <td class="gt_row gt_left">1.1.0</td>
+      <td class="gt_row gt_left">2020-05-29</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">prettyunits</td>
+      <td class="gt_row gt_left">1.1.1</td>
+      <td class="gt_row gt_left">2020-01-24</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">processx</td>
+      <td class="gt_row gt_left">3.4.4</td>
+      <td class="gt_row gt_left">2020-09-03</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">ps</td>
+      <td class="gt_row gt_left">1.3.4</td>
+      <td class="gt_row gt_left">2020-08-11</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">purrr</td>
+      <td class="gt_row gt_left">0.3.4</td>
+      <td class="gt_row gt_left">2020-04-17</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">R6</td>
+      <td class="gt_row gt_left">2.4.1</td>
+      <td class="gt_row gt_left">2019-11-12</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Rcpp</td>
+      <td class="gt_row gt_left">1.0.5</td>
+      <td class="gt_row gt_left">2020-07-06</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">readr</td>
+      <td class="gt_row gt_left">1.3.1</td>
+      <td class="gt_row gt_left">2018-12-21</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">readxl</td>
+      <td class="gt_row gt_left">1.3.1</td>
+      <td class="gt_row gt_left">2019-03-13</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">remotes</td>
+      <td class="gt_row gt_left">2.2.0</td>
+      <td class="gt_row gt_left">2020-07-21</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">reprex</td>
+      <td class="gt_row gt_left">0.3.0</td>
+      <td class="gt_row gt_left">2019-05-16</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">rlang</td>
+      <td class="gt_row gt_left">0.4.7</td>
+      <td class="gt_row gt_left">2020-07-09</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">rmarkdown</td>
+      <td class="gt_row gt_left">2.3</td>
+      <td class="gt_row gt_left">2020-06-18</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">rprojroot</td>
+      <td class="gt_row gt_left">1.3-2</td>
+      <td class="gt_row gt_left">2018-01-03</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">rstudioapi</td>
+      <td class="gt_row gt_left">0.11.0-9000</td>
+      <td class="gt_row gt_left">2020-06-15</td>
+      <td class="gt_row gt_left">Github (rstudio/rstudioapi@ed5dd25)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">rvest</td>
+      <td class="gt_row gt_left">0.3.5</td>
+      <td class="gt_row gt_left">2019-11-08</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">scales</td>
+      <td class="gt_row gt_left">1.1.1</td>
+      <td class="gt_row gt_left">2020-05-11</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">sessioninfo</td>
+      <td class="gt_row gt_left">1.1.1</td>
+      <td class="gt_row gt_left">2018-11-05</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">stringi</td>
+      <td class="gt_row gt_left">1.5.3</td>
+      <td class="gt_row gt_left">2020-09-09</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">stringr</td>
+      <td class="gt_row gt_left">1.4.0</td>
+      <td class="gt_row gt_left">2019-02-10</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">testthat</td>
+      <td class="gt_row gt_left">2.3.2</td>
+      <td class="gt_row gt_left">2020-03-02</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">tibble</td>
+      <td class="gt_row gt_left">3.0.3</td>
+      <td class="gt_row gt_left">2020-07-10</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">tidyr</td>
+      <td class="gt_row gt_left">1.1.2</td>
+      <td class="gt_row gt_left">2020-08-27</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">tidyselect</td>
+      <td class="gt_row gt_left">1.1.0</td>
+      <td class="gt_row gt_left">2020-05-11</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">tidyverse</td>
+      <td class="gt_row gt_left">1.3.0</td>
+      <td class="gt_row gt_left">2019-11-21</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">usethis</td>
+      <td class="gt_row gt_left">1.9.0.9000</td>
+      <td class="gt_row gt_left">2020-09-20</td>
+      <td class="gt_row gt_left">Github (r-lib/usethis@57d95a5)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">utf8</td>
+      <td class="gt_row gt_left">1.1.4</td>
+      <td class="gt_row gt_left">2018-05-24</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">vctrs</td>
+      <td class="gt_row gt_left">0.3.4</td>
+      <td class="gt_row gt_left">2020-08-29</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">withr</td>
+      <td class="gt_row gt_left">2.2.0</td>
+      <td class="gt_row gt_left">2020-04-20</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">xfun</td>
+      <td class="gt_row gt_left">0.17</td>
+      <td class="gt_row gt_left">2020-09-09</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">xml2</td>
+      <td class="gt_row gt_left">1.3.2</td>
+      <td class="gt_row gt_left">2020-04-23</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.2)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">yaml</td>
+      <td class="gt_row gt_left">2.2.1</td>
+      <td class="gt_row gt_left">2020-02-01</td>
+      <td class="gt_row gt_left">CRAN (R 3.6.0)</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
